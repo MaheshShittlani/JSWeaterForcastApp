@@ -47,10 +47,15 @@ locationForm.addEventListener('submit', e => {
 
     // Update City
     updateCity(city)
-        .then(data => {
-            console.log(data);
-            updateUI(data);
-        })
-        .catch(error => console.log(error))
+        .then(data => updateUI(data))
+        .catch(error => console.log(error));
     
+    localStorage.setItem('city',city);
 });
+
+
+if(city = localStorage.getItem('city')) {
+    updateCity(city)
+        .then(data => updateUI(data))
+        .catch(error => console.log(error));
+}
